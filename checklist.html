@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Freelancer Website Launch Checklist</title>
+    <style>
+        :root {
+            --bg-a: #6b7ff0;
+            --bg-b: #7a4bb0;
+            --muted: #64748b;
+            --card: #ffffff;
+            --glass: rgba(255, 255, 255, 0.08);
+            --accent-1: #60a5fa;
+            --accent-2: #34d399;
+            --accent-3: #f472b6;
+            --text: #0f172a;
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glass-blur: 10px;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+        }
+
+        /* reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        /* animated, layered background */
+        body {
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            line-height: 1.6;
+            color: var(--text);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background:
+                radial-gradient(1200px 600px at 10% 10%, rgba(255, 255, 255, 0.05), transparent 10%),
+                radial-gradient(900px 500px at 90% 90%, rgba(0, 0, 0, 0.06), transparent 10%),
+                linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 100%);
+        }
+
+        /* soft animated vignette */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+            mix-blend-mode: overlay;
+            z-index: 0;
+            animation: slowPulse 14s ease-in-out infinite;
+        }
+
+        @keyframes slowPulse {
+
+            0%,
+            100% {
+                opacity: .9;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.02)
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.25rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* header with angled hero stripe and frosted glass */
+        .header {
+            text-align: center;
+            margin-bottom: 2.25rem;
+            position: relative;
+            color: #fff;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) rotate(-6deg);
+            top: -14px;
+            width: 120%;
+            height: 72px;
+            border-radius: 28px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+            filter: blur(12px);
+            z-index: -1;
+        }
+
+        .header h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(90deg, var(--accent-1), var(--accent-3));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 6px 22px rgba(99, 102, 241, 0.12);
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 10px;
+        }
+
+        .header p {
+            margin-top: 0.45rem;
+            font-size: 1.05rem;
+            opacity: 0.9;
+            filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.18));
+        }
+
+        /* progress with energetic gradient + stripe animation */
+        .progress-bar {
+            height: 12px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+            overflow: hidden;
+            position: relative;
+            margin: 1.6rem 0;
+            box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.12);
+            border: 1px solid var(--glass-border);
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent-2), #16a34a 50%, var(--accent-1));
+            border-radius: 999px;
+            position: relative;
+            overflow: hidden;
+            transition: width 450ms cubic-bezier(.2, .9, .26, 1);
+        }
+
+        .progress-fill::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.06) 0 6px, transparent 6px 12px);
+            animation: stripeMove 1.8s linear infinite;
+            mix-blend-mode: overlay;
+            opacity: 0.35;
+        }
+
+        @keyframes stripeMove {
+            to {
+                transform: translateX(24px)
+            }
+        }
+
+        .progress-text {
+            color: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-weight: 600
+        }
+
+        /* layout grid */
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem
+        }
+
+        @media (max-width:768px) {
+            .sections {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* card style: glass + angled accent + subtle depth */
+        .section {
+            position: relative;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.94));
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            box-shadow: 0 18px 30px rgba(11, 20, 40, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+            overflow: visible;
+            transition: transform .22s cubic-bezier(.2, .9, .26, 1), box-shadow .22s;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .section:hover {
+            transform: translateY(-8px) rotate(-0.2deg);
+            box-shadow: 0 30px 50px rgba(11, 20, 40, 0.16)
+        }
+
+        /* diagonal accent stripe */
+        .section::after {
+            content: "";
+            position: absolute;
+            right: -40px;
+            top: 12px;
+            width: 120px;
+            height: 120px;
+            transform: rotate(25deg);
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .section h2 {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: 0.85rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .section h2 .section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: inline-grid;
+            place-items: center;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.32));
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.08), inset 0 -2px 6px rgba(255, 255, 255, 0.5);
+        }
+
+        /* left color bar for you-do / delegate */
+        .you-do {
+            border-left: 6px solid var(--accent-1);
+            padding-left: 1rem
+        }
+
+        .delegate {
+            border-left: 6px solid var(--accent-2);
+            padding-left: 1rem
+        }
+
+        .category {
+            margin-bottom: 1.25rem
+        }
+
+        .category h3 {
+            color: var(--muted);
+            font-size: 1rem;
+            margin-bottom: .6rem;
+            font-weight: 700
+        }
+
+        /* checklist: friendly, animated checkboxes */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            margin-bottom: .9rem;
+            padding: .7rem;
+            border-radius: 10px;
+            transition: background-color .18s, transform .18s;
+        }
+
+        .checklist-item:hover {
+            transform: translateY(-4px);
+            background: rgba(2, 6, 23, 0.02)
+        }
+
+        .checklist-item.completed {
+            background: linear-gradient(180deg, #f0fdf4, #f7fff7);
+        }
+
+        .checkbox {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid rgba(15, 23, 42, 0.12);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 250, 250, 0.9));
+            transition: all .18s cubic-bezier(.2, .9, .3, 1);
+        }
+
+        .checkbox.checked {
+            background: linear-gradient(180deg, var(--accent-2), #059669);
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.14);
+            transform: scale(1.04) rotate(-6deg);
+        }
+
+        /* animated check mark (CSS-only) */
+        .checkbox.checked::after {
+            content: "";
+            width: 10px;
+            height: 6px;
+            border-left: 3px solid white;
+            border-bottom: 3px solid white;
+            transform: rotate(-45deg) translateY(-1px);
+            display: block;
+            margin-left: 1px;
+        }
+
+        .item-content {
+            flex: 1
+        }
+
+        .item-title {
+            font-weight: 700;
+            margin-bottom: 0.18rem;
+            color: var(--text)
+        }
+
+        .item-description {
+            color: var(--muted);
+            font-size: .92rem
+        }
+
+        .completed .item-title,
+        .completed .item-description {
+            text-decoration: line-through;
+            opacity: .6;
+        }
+
+        /* stats cards */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.98)
+        }
+
+        .stat {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+            padding: .7rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06)
+        }
+
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 800
+        }
+
+        .stat-label {
+            font-size: .88rem;
+            opacity: .95;
+            color: rgba(255, 255, 255, 0.9)
+        }
+
+        /* micro animations for attention */
+        .pulse {
+            animation: pulseGlow 2s infinite
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.12)
+            }
+
+            70% {
+                box-shadow: 0 0 28px 8px rgba(99, 102, 241, 0.04)
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.0)
+            }
+        }
+
+        /* responsive tweaks */
+        @media (max-width:768px) {
+            .header h1 {
+                font-size: 2rem
+            }
+
+            .container {
+                padding: 1rem
+            }
+
+            .section {
+                padding: 1rem
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Website Launch Checklist</h1>
+            <p>Everything you need to get your marketing freelance website live and converting</p>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Complete</div>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" id="completedCount">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">Total Tasks</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sections">
+            <!-- What You Need to Do -->
+            <div class="section you-do">
+                <h2>
+                    <svg class="section-icon" fill="#3b82f6" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                    What You Need to Do
+                </h2>
+
+                <div class="category">
+                    <h3>📍 Define Your Foundation</h3>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Set your main goal</div>
+                            <div class="item-description">Write down ONE specific outcome (e.g., "Get 50 qualified leads
+                                per month")</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Define your ideal clients</div>
+                            <div class="item-description">List 2-3 specific client types and their biggest pain points
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Craft your value proposition</div>
+                            <div class="item-description">One clear sentence: what you do, for whom, and why it matters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Choose primary & backup actions</div>
+                            <div class="item-description">Main CTA (book consultation) + backup (download guide,
+                                subscribe)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>✍️ Create Your Content</h3>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Write homepage copy</div>
+                            <div class="item-description">Headline, subheadline, intro paragraph, and 2 key benefit
+                                points</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Create service page content</div>
+                            <div class="item-description">For each service: problem it solves, your solution, client
+                                benefit</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Gather social proof</div>
+                            <div class="item-description">Collect 3-5 client testimonials, case studies, or results with
+                                names</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Write call-to-action text</div>
+                            <div class="item-description">Exact button text for every form ("Book Strategy Call," "Get
+                                Proposal")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>🎯 Plan Your Launch</h3>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Define what to track</div>
+                            <div class="item-description">List exact actions: form submits, phone clicks, email signups
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Write launch announcements</div>
+                            <div class="item-description">Draft email, LinkedIn post, and any ads to promote your new
+                                site</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="you">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Plan ongoing updates</div>
+                            <div class="item-description">Decide who updates content, adds case studies, writes blog
+                                posts</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What to Delegate -->
+            <div class="section delegate">
+                <h2>
+                    <svg class="section-icon" fill="#10b981" viewBox="0 0 24 24">
+                        <path
+                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20a2 2 0 01-2-2v-2a2 2 0 012-2h1m-1 4h10m-5.5-6.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM15.5 7.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                    </svg>
+                    What to Delegate
+                </h2>
+
+                <div class="category">
+                    <h3>🎨 Design & Branding</h3>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Provide brand assets</div>
+                            <div class="item-description">Logo files, brand colors, fonts, and style preferences</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Supply photography</div>
+                            <div class="item-description">Professional headshot, client photos, or approved stock images
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Provide visual extras</div>
+                            <div class="item-description">Icons, diagrams, process flows, or videos you want included
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3>⚙️ Technical Setup</h3>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Website development</div>
+                            <div class="item-description">Build responsive site with your content and branding</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Analytics integration</div>
+                            <div class="item-description">Set up Google Analytics, Tag Manager, and tracking pixels
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Conversion tracking</div>
+                            <div class="item-description">Configure form submissions, click-to-call, and goal tracking
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Legal pages setup</div>
+                            <div class="item-description">Add privacy policy, terms of service, and required disclaimers
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Performance optimization</div>
+                            <div class="item-description">Optimize for speed, mobile responsiveness, and SEO basics
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Domain & hosting setup</div>
+                            <div class="item-description">Configure domain, SSL certificate, and reliable hosting</div>
+                        </div>
+                    </div>
+                    <div class="checklist-item" data-category="delegate">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-title">Testing & launch</div>
+                            <div class="item-description">Cross-browser testing, form testing, and go-live coordination
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const checkboxes = document.querySelectorAll('.checkbox')
+        const progressFill = document.getElementById('progressFill')
+        const progressText = document.getElementById('progressText')
+        const completedCount = document.getElementById('completedCount')
+        const totalCount = document.getElementById('totalCount')
+
+        totalCount.textContent = checkboxes.length
+
+        // Load state from localStorage
+        const savedState = JSON.parse(localStorage.getItem('checklistState') || '{}')
+
+        checkboxes.forEach((checkbox, index) => {
+            const item = checkbox.closest('.checklist-item')
+
+            // Restore saved state
+            if (savedState[index]) {
+                checkbox.classList.add('checked')
+                item.classList.add('completed')
+            }
+
+            // Listen for click
+            checkbox.addEventListener('click', () => {
+                const isChecked = checkbox.classList.toggle('checked')
+                item.classList.toggle('completed', isChecked)
+
+                saveState()
+                updateProgress()
+            })
+        })
+
+        function updateProgress() {
+            const checkedBoxes = document.querySelectorAll('.checkbox.checked')
+            const progress = (checkedBoxes.length / checkboxes.length) * 100
+
+            progressFill.style.width = progress + '%'
+            progressText.textContent = Math.round(progress) + '% Complete'
+            completedCount.textContent = checkedBoxes.length
+
+            // Celebrate
+            if (progress === 100) {
+                setTimeout(() => alert('🎉 Congratulations! Your website is ready to launch! 🚀'), 500)
+            }
+        }
+
+        function saveState() {
+            const state = {}
+            checkboxes.forEach((checkbox, index) => {
+                state[index] = checkbox.classList.contains('checked')
+            })
+            localStorage.setItem('checklistState', JSON.stringify(state))
+        }
+
+        updateProgress();
+    </script>
+
+</body>
+
+</html>
